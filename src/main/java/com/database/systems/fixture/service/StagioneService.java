@@ -30,9 +30,9 @@ public class StagioneService implements IStagioneService {
 
     @Override
     public boolean addStagione(Stagione stagione) {
-        if (stagioneRepository.stagioneExists(stagione.getAnno())) {
+        if (stagioneRepository.stagioneExists(stagione.getAnno()))
             return false;
-        } else {
+        else {
             stagioneRepository.addStagione(stagione);
             return true;
         }

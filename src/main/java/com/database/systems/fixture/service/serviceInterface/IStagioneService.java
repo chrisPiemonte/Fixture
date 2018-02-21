@@ -10,9 +10,13 @@ import java.util.List;
 public interface IStagioneService {
 
     List<Stagione> getAllStagioni();
+
     Stagione getStagioneById(String stagioneId);
+
     boolean addStagione(Stagione stagione);
+
     void updateStagione(Stagione stagione);
+
     void deleteStagione(String stagioneId);
 
 }
