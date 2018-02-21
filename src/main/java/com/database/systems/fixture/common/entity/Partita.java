@@ -26,7 +26,7 @@ public class Partita implements Serializable {
     private LocalDate data;
 
     @Column(name = "molt")
-    private double id;
+    private double molt;
 
     @Column(name = "squadra_avversaria")
     private String squadraAvversaria;
@@ -35,10 +35,10 @@ public class Partita implements Serializable {
 
     }
 
-    public Partita(PartitaId numeroAndStagione, LocalDate data, double id, String squadraAvversaria) {
+    public Partita(PartitaId numeroAndStagione, LocalDate data, double molt, String squadraAvversaria) {
         this.numeroAndStagione = numeroAndStagione;
         this.data = data;
-        this.id = id;
+        this.molt = molt;
         this.squadraAvversaria = squadraAvversaria;
     }
 
@@ -58,12 +58,12 @@ public class Partita implements Serializable {
         this.data = data;
     }
 
-    public double getId() {
-        return id;
+    public double getMolt() {
+        return molt;
     }
 
-    public void setId(double id) {
-        this.id = id;
+    public void setMolt(double molt) {
+        this.molt = molt;
     }
 
     public String getSquadraAvversaria() {
@@ -79,7 +79,7 @@ public class Partita implements Serializable {
         return "Partita{" +
                 "numeroAndStagione=" + numeroAndStagione +
                 ", data=" + data +
-                ", id=" + id +
+                ", molt=" + molt +
                 ", squadraAvversaria='" + squadraAvversaria + '\'' +
                 '}';
     }

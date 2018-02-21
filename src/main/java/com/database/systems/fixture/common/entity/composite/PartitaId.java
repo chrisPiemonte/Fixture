@@ -25,6 +25,22 @@ public class PartitaId implements Serializable {
         this.stagione = stagione;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getStagione() {
+        return stagione;
+    }
+
+    public void setStagione(String stagione) {
+        this.stagione = stagione;
+    }
+
     @Override
     public String toString() {
         return "PartitaId{" +

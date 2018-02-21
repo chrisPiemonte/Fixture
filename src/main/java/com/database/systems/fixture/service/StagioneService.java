@@ -1,7 +1,8 @@
 package com.database.systems.fixture.service;
 
 import com.database.systems.fixture.common.entity.Stagione;
-import com.database.systems.fixture.repository.IStagioneRepository;
+import com.database.systems.fixture.repository.repositoryInterface.IStagioneRepository;
+import com.database.systems.fixture.service.serviceInterface.IStagioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 
 @Service
-public class StagioneService implements IStagioneService{
+public class StagioneService implements IStagioneService {
 
     @Autowired
     private IStagioneRepository stagioneRepository;
@@ -23,23 +24,28 @@ public class StagioneService implements IStagioneService{
     }
 
     @Override
-    public Stagione getStagioneById(int stagioneId) {
-        return null;
+    public Stagione getStagioneById(String stagioneId) {
+        return stagioneRepository.getStagioneById(stagioneId);
     }
 
     @Override
-    public boolean addAStagione(Stagione stagione) {
-        return false;
+    public boolean addStagione(Stagione stagione) {
+        if (stagioneRepository.stagioneExists(stagione.getAnno())) {
+            return false;
+        } else {
+            stagioneRepository.addStagione(stagione);
+            return true;
+        }
     }
 
     @Override
     public void updateStagione(Stagione stagione) {
-
+        stagioneRepository.updateStagione(stagione);
     }
 
     @Override
-    public void deleteStagione(int stagioneId) {
-
+    public void deleteStagione(String stagioneId) {
+        stagioneRepository.deleteStagione(stagioneId);
     }
 
 

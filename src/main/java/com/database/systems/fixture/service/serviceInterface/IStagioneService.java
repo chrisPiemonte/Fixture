@@ -1,4 +1,4 @@
-package com.database.systems.fixture.service;
+package com.database.systems.fixture.service.serviceInterface;
 
 import com.database.systems.fixture.common.entity.Stagione;
 
@@ -10,9 +10,9 @@ import java.util.List;
 public interface IStagioneService {
 
     List<Stagione> getAllStagioni();
-    Stagione getStagioneById(int stagioneId);
-    boolean addAStagione(Stagione stagione);
+    Stagione getStagioneById(String stagioneId);
+    boolean addStagione(Stagione stagione);
     void updateStagione(Stagione stagione);
-    void deleteStagione(int stagioneId);
+    void deleteStagione(String stagioneId);
 
 }

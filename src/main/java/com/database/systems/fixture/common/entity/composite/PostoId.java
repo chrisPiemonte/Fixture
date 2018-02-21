@@ -29,6 +29,30 @@ public class PostoId implements Serializable {
         this.anello = anello;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getSettore() {
+        return settore;
+    }
+
+    public void setSettore(String settore) {
+        this.settore = settore;
+    }
+
+    public String getAnello() {
+        return anello;
+    }
+
+    public void setAnello(String anello) {
+        this.anello = anello;
+    }
+
     @Override
     public String toString() {
         return "PostoId{" +

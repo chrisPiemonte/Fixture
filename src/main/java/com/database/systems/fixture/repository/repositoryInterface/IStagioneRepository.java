@@ -1,4 +1,4 @@
-package com.database.systems.fixture.repository;
+package com.database.systems.fixture.repository.repositoryInterface;
 
 import com.database.systems.fixture.common.entity.Stagione;
 
@@ -12,14 +12,14 @@ public interface IStagioneRepository {
 
     List<Stagione> getAllStagioni();
 
-    Stagione getStagioneById(int stagioneId);
+    Stagione getStagioneById(String stagioneId);
 
     void addStagione(Stagione stagione);
 
     void updateStagione(Stagione stagione);
 
-    void deleteStagione(int Stagione);
+    void deleteStagione(String stagione);
 
-    boolean StagioneExists(String anno);
+    boolean stagioneExists(String anno);
 
 }

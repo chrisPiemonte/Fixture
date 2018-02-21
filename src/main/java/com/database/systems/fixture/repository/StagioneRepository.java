@@ -1,6 +1,7 @@
 package com.database.systems.fixture.repository;
 
 import com.database.systems.fixture.common.entity.Stagione;
+import com.database.systems.fixture.repository.repositoryInterface.IStagioneRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class StagioneRepository implements IStagioneRepository{
+public class StagioneRepository implements IStagioneRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -25,34 +26,37 @@ public class StagioneRepository implements IStagioneRepository{
     @SuppressWarnings("unchecked")
     @Override
     public List<Stagione> getAllStagioni() {
-
         String hql = "FROM Stagione as s ORDER BY s.anno";
         return (List<Stagione>) entityManager.createQuery(hql).getResultList();
     }
 
     @Override
-    public Stagione getStagioneById(int stagioneId) {
-        return null;
+    public Stagione getStagioneById(String stagioneId) {
+        return entityManager.find(Stagione.class, stagioneId);
     }
 
     @Override
     public void addStagione(Stagione stagione) {
-
+        entityManager.persist(stagione);
     }
 
     @Override
     public void updateStagione(Stagione stagione) {
-
+        Stagione stg = getStagioneById(stagione.getAnno());
+        stg.setAnno(stagione.getAnno());
+        entityManager.flush();
     }
 
     @Override
-    public void deleteStagione(int stagioneId) {
-
+    public void deleteStagione(String stagioneId) {
+        entityManager.remove(getStagioneById(stagioneId));
     }
 
     @Override
-    public boolean StagioneExists(String anno) {
-        return false;
+    public boolean stagioneExists(String anno) {
+        String hql = "FROM Stagione as stg WHERE stg.anno = ?";
+        int count = entityManager.createQuery(hql).setParameter(1, anno).getResultList().size();
+        return count > 0;
     }
 
 }
