@@ -46,12 +46,11 @@ public class Dao {
 
         try {
             Statement stmt = connection.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM studenti");
+            ResultSet result = stmt.executeQuery("SELECT * FROM stagione");
 
             while (result.next()) {
-                String id = result.getString("id");
-                String nome = result.getString("name");
-                names.add(id + "-" + nome);
+                String id = result.getString("anno");
+                names.add(id + "-");
             }
 
             result.close();
