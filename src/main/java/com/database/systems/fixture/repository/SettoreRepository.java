@@ -54,7 +54,7 @@ public class SettoreRepository implements ISettoreRepository {
 
     @Override
     public boolean settoreExists(String settoreId) {
-        String hql = "FROM Settore as str WHERE str.id = ?";
+        String hql = "FROM Settore as str WHERE str.id = ?1";
         int count = entityManager.createQuery(hql).setParameter(1, settoreId).getResultList().size();
         return count > 0;
     }

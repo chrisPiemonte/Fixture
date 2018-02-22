@@ -8,6 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -57,10 +61,16 @@ public class PartitaRepository implements IPartitaRepository {
 
     @Override
     public boolean partitaExists(PartitaId partitaId) {
-        String hql = "FROM Partita as p WHERE p.numero = ? AND p.stagione = ?";
+       /* CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Partita> q = cb.createQuery(Partita.class);
+        Root<Partita> p = q.from(Partita.class);
+        ParameterExpression<Integer> par = cb.parameter(Integer.class);
+        q.select(p).where(cb.gt(p.get("population"), par));
+*/
+        String hql = "FROM Partita as p WHERE p.numeroAndStagione.stagione = ?1 AND p.numeroAndStagione.numero = ?2";
         int count = entityManager.createQuery(hql)
-                .setParameter(1, partitaId.getNumero())
-                .setParameter(2, partitaId.getStagione())
+                .setParameter(1, partitaId.getStagione())
+                .setParameter(2, partitaId.getNumero())
                 .getResultList().size();
         return count > 0;
     }

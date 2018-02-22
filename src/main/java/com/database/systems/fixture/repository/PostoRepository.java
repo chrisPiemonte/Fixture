@@ -59,7 +59,9 @@ public class PostoRepository implements IPostoRepository {
 
     @Override
     public boolean postoExists(PostoId postoId) {
-        String hql = "FROM Posto as pst WHERE pst.numero = ? AND pst.settore = ? AND pst.anello = ?";
+        String hql = "FROM Posto as pst WHERE pst.numeroSettoreAnello.numero = ?1 " +
+                "AND pst.numeroSettoreAnello.settore = ?2 " +
+                "AND pst.numeroSettoreAnello.anello = ?3";
         int count = entityManager.createQuery(hql)
                 .setParameter(1, postoId.getNumero())
                 .setParameter(2, postoId.getSettore())

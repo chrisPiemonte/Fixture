@@ -59,7 +59,7 @@ public class PersonaRepository implements IPersonaRepository {
 
     @Override
     public boolean personaExists(String cf) {
-        String hql = "FROM Persona as prs WHERE prs.cf = ?";
+        String hql = "FROM Persona as prs WHERE prs.cf = ?1";
         int count = entityManager.createQuery(hql)
                 .setParameter(1, cf)
                 .getResultList().size();

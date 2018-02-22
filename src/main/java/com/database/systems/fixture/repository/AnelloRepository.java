@@ -56,7 +56,7 @@ public class AnelloRepository implements IAnelloRepository {
 
     @Override
     public boolean anelloExists(String anelloId) {
-        String hql = "FROM Anello as anl WHERE anl.id = ?";
+        String hql = "FROM Anello as anl WHERE anl.id = ?1";
         int count = entityManager.createQuery(hql).setParameter(1, anelloId).getResultList().size();
         return count > 0;
     }

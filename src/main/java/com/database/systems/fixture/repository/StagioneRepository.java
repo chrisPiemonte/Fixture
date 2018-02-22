@@ -54,7 +54,7 @@ public class StagioneRepository implements IStagioneRepository {
 
     @Override
     public boolean stagioneExists(String anno) {
-        String hql = "FROM Stagione as stg WHERE stg.anno = ?";
+        String hql = "FROM Stagione as stg WHERE stg.anno = ?1";
         int count = entityManager.createQuery(hql).setParameter(1, anno).getResultList().size();
         return count > 0;
     }

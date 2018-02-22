@@ -55,7 +55,7 @@ public class SquadraAvversariaRepository implements ISquadraAvversariaRepository
 
     @Override
     public boolean squadraAvversariaExists(String nomeSquadra) {
-        String hql = "FROM SquadraAvversaria as sqavv WHERE sqavv.nome = ?";
+        String hql = "FROM SquadraAvversaria as sqavv WHERE sqavv.nome = ?1";
         int count = entityManager.createQuery(hql).setParameter(1, nomeSquadra).getResultList().size();
         return count > 0;
     }

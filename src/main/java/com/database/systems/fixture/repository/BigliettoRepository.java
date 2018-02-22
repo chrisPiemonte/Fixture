@@ -52,7 +52,7 @@ public class BigliettoRepository implements IBigliettoRepository {
 
     @Override
     public boolean bigliettoExists(int bigliettoId) {
-        String hql = "FROM Biglietto as b WHERE b.id = ?";
+        String hql = "FROM Biglietto as b WHERE b.id = ?1";
         int count = entityManager.createQuery(hql).setParameter(1, bigliettoId).getResultList().size();
         return count > 0;
     }

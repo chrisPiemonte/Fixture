@@ -17,14 +17,14 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("api")
 public class StagioneController {
 
     @Autowired
     private IStagioneService stagioneService;
 
     @GetMapping("stagioni")
-    public ResponseEntity<List<Stagione>> getAllArticles() {
+    public ResponseEntity<List<Stagione>> getAllStagioni() {
         List<Stagione> list = stagioneService.getAllStagioni();
         return new ResponseEntity<List<Stagione>>(list, HttpStatus.OK);
     }
@@ -45,11 +45,13 @@ public class StagioneController {
         headers.setLocation(builder.path("/stagione/{anno}").buildAndExpand(stagione.getAnno()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
+
     @PutMapping("stagione")
     public ResponseEntity<Stagione> updateStagione(@RequestBody Stagione stagione) {
         stagioneService.updateStagione(stagione);
         return new ResponseEntity<Stagione>(stagione, HttpStatus.OK);
     }
+
     @DeleteMapping("stagione/{anno}")
     public ResponseEntity<Void> deleteStagione(@PathVariable("anno") String anno) {
         stagioneService.deleteStagione(anno);
