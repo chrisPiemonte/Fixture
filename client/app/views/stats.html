@@ -1,1 +1,79 @@
-<p>This is the stats view.</p>
+		<p align="center"><a href="#/"><img src="images/frontm.png" class="img-responsive"></a></p>
+		
+		<div class="jumbotron">
+			<form role="form">
+				<!--<input type="text" ng-model="stagione" placeholder="Stagione" class="form-control input-lg">-->
+				<div class="btn-group btn-block col-sm-10" ng-class='{open: open}'>
+					<button class="btn btn-default btn-toggle col-sm-10" ng-model="stagione">{{stagione}}</button>
+					<button class="btn dropdown-toggle col-sm-2" data-toggle="dropdown" ng-click='open=!open'>
+						<span class="caret "></span>
+					</button>
+					<ul class="dropdown-menu btn-block">
+						<li class="text-center"><a ng-click='f0001()'>2000 / 2001</a></li>
+						<li class="text-center"><a ng-click='f0102()'>2001 / 2002</a></li>
+						<li class="text-center"><a ng-click='f0203()'>2002 / 2003</a></li>
+						<li class="text-center"><a ng-click='f0304()'>2003 / 2004</a></li>
+						<li class="text-center"><a ng-click='f0405()'>2004 / 2005</a></li>
+						<li class="text-center"><a ng-click='f0506()'>2005 / 2006</a></li>
+						<li class="text-center"><a ng-click='f0607()'>2006 / 2007</a></li>
+						<li class="text-center"><a ng-click='f0708()'>2007 / 2008</a></li>
+						<li class="text-center"><a ng-click='f0809()'>2008 / 2009</a></li>
+						<li class="text-center"><a ng-click='f0910()'>2009 / 2010</a></li>
+					</ul>
+				</div>	
+				<span class="btn-group btn-block col-sm-10"></span><span class="btn-group btn-block col-sm-10"></span><span class="btn-group btn-block col-sm-10"></span>
+				<p>
+					<a class="btn btn-lg btn-success" ng-click="getStats()">Elabora statistiche
+						<span class="glyphicon glyphicon-ok"></span>
+					</a>
+				</p>
+			</form> 
+		</div>
+
+		<div ng-show="showTable"class="container">
+			<h2>Presenze</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Partita</th>
+						<th>Settore</th>
+						<th>Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in jsonResp">
+						<td ng-repeat="(key, val) in item">
+							{{val}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+
+
+<!--
+
+				<div class="btn-group" ng-class='{open: open}'>
+	    			<button class="btn btn-default">Stagione</button>
+	    			<button class="btn dropdown-toggle" data-toggle="dropdown" ng-click='open=!open'>
+	        			<span class="caret"></span>
+	    			</button>
+	    			<ul class="dropdown-menu">
+	        			<li><a ng-click='f0001()'>2000 / 2001</a></li>
+	        			<li><a ng-click='f0102()'>2001 / 2002</a></li>
+	        			<li><a ng-click='f0203()'>2002 / 2003</a></li>
+	        			<li><a ng-click='f0304()'>2003 / 2004</a></li>
+	        			<li><a ng-click='f0405()'>2004 / 2005</a></li>
+	        			<li><a ng-click='f0506()'>2005 / 2006</a></li>
+	        			<li><a ng-click='f0607()'>2006 / 2007</a></li>
+	        			<li><a ng-click='f0708()'>2007 / 2008</a></li>
+	        			<li><a ng-click='f0809()'>2008 / 2009</a></li>
+	        			<li><a ng-click='f0910()'>2009 / 2010</a></li>
+	    			</ul>
+				</div>
+
+				-->

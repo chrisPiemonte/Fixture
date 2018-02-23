@@ -1,14 +1,119 @@
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+	<p align="center"><a href="#/"><img src="images/frontm.png" class="img-responsive"></a></p>
+	
+	<div class="jumbotron">
+		<form role="form btn-block">
+			<div class="form-group row btn-block">
+				<div class="col-sm-4 ">
+					<!--<input type="text" ng-model="stagione" placeholder="stagione" class="form-control input-lg">-->
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+					<div class="btn-group " ng-class='{open1: open1}'>
+						<button class="btn btn-default " ng-model="stagione" >{{stagione}}</button>
+						<button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open1=!open1'>
+							<span class="caret "></span>
+						</button>
+						<ul class="dropdown-menu ">
+							<li><a ng-click='fStagione0001()'>2000 / 2001</a></li>
+							<li><a ng-click='fStagione0102()'>2001 / 2002</a></li>
+							<li><a ng-click='fStagione0203()'>2002 / 2003</a></li>
+							<li><a ng-click='fStagione0304()'>2003 / 2004</a></li>
+							<li><a ng-click='fStagione0405()'>2004 / 2005</a></li>
+							<li><a ng-click='fStagione0506()'>2005 / 2006</a></li>
+							<li><a ng-click='fStagione0607()'>2006 / 2007</a></li>
+							<li><a ng-click='fStagione0708()'>2007 / 2008</a></li>
+							<li><a ng-click='fStagione0809()'>2008 / 2009</a></li>
+							<li><a ng-click='fStagione0910()'>2009 / 2010</a></li>
+						</ul>
+					</div>	
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+				</div>
+				<div class="col-sm-4">
+					<!--<input type="text" ng-model="partita" placeholder="partita" class="form-control input-lg">-->
+
+					<div class="btn-group " ng-class='{open2: open2}'>
+						<button class="btn btn-default " ng-model="partita" >{{partita}}</button>
+						<button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open2=!open2'>
+							<span class="caret "></span>
+						</button>
+						<ul class="dropdown-menu ">
+							<li><a ng-click='fPartita1()'>1° Partita</a></li>
+							<li><a ng-click='fPartita2()'>2° Partita</a></li>
+							<li><a ng-click='fPartita3()'>3° Partita</a></li>
+							<li><a ng-click='fPartita4()'>4° Partita</a></li>
+							<li><a ng-click='fPartita5()'>5° Partita</a></li>
+							<li><a ng-click='fPartita6()'>6° Partita</a></li>
+							<li><a ng-click='fPartita7()'>7° Partita</a></li>
+							<li><a ng-click='fPartita8()'>8° Partita</a></li>
+							<li><a ng-click='fPartita9()'>9° Partita</a></li>
+							<li><a ng-click='fPartita10()'>10° Partita</a></li>
+							<li><a ng-click='fPartita11()'>1° Partita</a></li>
+							<li><a ng-click='fPartita12()'>12° Partita</a></li>
+							<li><a ng-click='fPartita13()'>13° Partita</a></li>
+							<li><a ng-click='fPartita14()'>14° Partita</a></li>
+							<li><a ng-click='fPartita15()'>15° Partita</a></li>
+							<li><a ng-click='fPartita16()'>16° Partita</a></li>
+							<li><a ng-click='fPartita17()'>17° Partita</a></li>
+							<li><a ng-click='fPartita18()'>18° Partita</a></li>
+							<li><a ng-click='fPartita19()'>19° Partita</a></li>
+						</ul>
+					</div>	
+				</div>
+				<div class="col-sm-4">
+					<!--<input type="text" ng-model="settore" placeholder="settore" class="form-control input-lg">-->
+
+					<div class="btn-group" ng-class='{open3: open3}'>
+						<button class="btn btn-default " ng-model="settore" >{{settore}}</button>
+						<button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open3=!open3'>
+							<span class="caret "></span>
+						</button>
+						<ul class="dropdown-menu ">
+							<li><a ng-click='fSettore001()'>Curva Nord Est</a></li>
+							<li><a ng-click='fSettore002()'>Curva Nord Ovest</a></li>
+							<li><a ng-click='fSettore003()'>Curva Sud Est</a></li>
+							<li><a ng-click='fSettore004()'>Curva Sud Ovest</a></li>
+							<li><a ng-click='fSettore005()'>Tribuna Est</a></li>
+							<li><a ng-click='fSettore006()'>Tribuna Centro</a></li>
+							<li><a ng-click='fSettore007()'>Tribuna Ovest</a></li>
+							<li><a ng-click='fSettore008()'>Gradinata Est</a></li>
+							<li><a ng-click='fSettore009()'>Gradinata Centro</a></li>
+							<li><a ng-click='fSettore010()'>Gradinata Ovest</a></li>
+						</ul>
+					</div>
+					<span class="btn-group btn-block col-sm-10"></span>
+					<span class="btn-group btn-block col-sm-10"></span>
+					<span class="btn-group btn-block col-sm-10"></span>
+				</div>
+			</div>
+			<p>
+				<a class="btn btn-lg btn-success" ng-click="trovaPresenze()">
+					Vedi presenze nel settore <span class="glyphicon glyphicon-ok"></span>
+				</a>
+			</p>
+		</form> 
+	</div>
+
+
+	<div ng-show="showTable"class="container">
+		<h2>Presenze</h2>          
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>CF</th>
+					<th>Tipo</th>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Data N</th>
+					<th>Luogo N</th>
+					<th>tel</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in jsonResp">
+					<td ng-repeat="(key, val) in item">
+						{{val}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+

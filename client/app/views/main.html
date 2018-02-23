@@ -4,91 +4,175 @@
 <div class="jumbotron">
   <form role="form">
     <div class="row marketing">
-        <div class="form-group">
-            <div class="form-group row">
-                <div class="col-sm-4">
-                  <input type="text" ng-model="settore" placeholder="Settore" class="form-control input-lg">
-                </div>
-                <div class="col-sm-4">
-                  <input type="text" ng-model="anello" placeholder="Anello" class="form-control input-lg">
-                </div>
-                <div class="col-sm-4">
-                  <input type="text" ng-model="posto" placeholder="Posto" class="form-control input-lg">
-                </div>
-              </div>
-            <p>
-              <input type="text" ng-model="spettatore" placeholder="Spettatore" class="form-control input-lg">
-            </p>
-            <p>
-              <input type="text" ng-model="compratore" placeholder="Compratore" class="form-control input-lg">
-            </p>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="text" ng-model="settore" placeholder="Settore" class="form-control input-lg">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" ng-model="anello" placeholder="Anello" class="form-control input-lg">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" ng-model="posto" placeholder="Posto" class="form-control input-lg">
+          </div>
+        </div>
+        <p>
+          <input type="text" ng-model="spettatore" placeholder="Spettatore" class="form-control input-lg">
+        </p>
+        <p>
+          <input type="text" ng-model="compratore" placeholder="Compratore" class="form-control input-lg">
+        </p>
+        <div >
+          <div class="btn-group gap" ng-class='{open1: open1}'>
+            <button class="btn btn-default " ng-model="stagione" >{{stagione}}</button>
+            <button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open1=!open1'>
+              <span class="caret "></span>
+            </button>
+            <ul class="dropdown-menu ">
+              <li><a ng-click='fStagione0001()'>2000 / 2001</a></li>
+              <li><a ng-click='fStagione0102()'>2001 / 2002</a></li>
+              <li><a ng-click='fStagione0203()'>2002 / 2003</a></li>
+              <li><a ng-click='fStagione0304()'>2003 / 2004</a></li>
+              <li><a ng-click='fStagione0405()'>2004 / 2005</a></li>
+              <li><a ng-click='fStagione0506()'>2005 / 2006</a></li>
+              <li><a ng-click='fStagione0607()'>2006 / 2007</a></li>
+              <li><a ng-click='fStagione0708()'>2007 / 2008</a></li>
+              <li><a ng-click='fStagione0809()'>2008 / 2009</a></li>
+              <li><a ng-click='fStagione0910()'>2009 / 2010</a></li>
+            </ul>
+          </div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="btn-group gap" ng-class='{open2: open2}'>
+            <button class="btn btn-default " ng-model="partita" >{{partita}}</button>
+            <button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open2=!open2'>
+              <span class="caret "></span>
+            </button>
+            <ul class="dropdown-menu ">
+              <li><a ng-click='fPartita1()'>1° Partita</a></li>
+              <li><a ng-click='fPartita2()'>2° Partita</a></li>
+              <li><a ng-click='fPartita3()'>3° Partita</a></li>
+              <li><a ng-click='fPartita4()'>4° Partita</a></li>
+              <li><a ng-click='fPartita5()'>5° Partita</a></li>
+              <li><a ng-click='fPartita6()'>6° Partita</a></li>
+              <li><a ng-click='fPartita7()'>7° Partita</a></li>
+              <li><a ng-click='fPartita8()'>8° Partita</a></li>
+              <li><a ng-click='fPartita9()'>9° Partita</a></li>
+              <li><a ng-click='fPartita10()'>10° Partita</a></li>
+              <li><a ng-click='fPartita11()'>1° Partita</a></li>
+              <li><a ng-click='fPartita12()'>12° Partita</a></li>
+              <li><a ng-click='fPartita13()'>13° Partita</a></li>
+              <li><a ng-click='fPartita14()'>14° Partita</a></li>
+              <li><a ng-click='fPartita15()'>15° Partita</a></li>
+              <li><a ng-click='fPartita16()'>16° Partita</a></li>
+              <li><a ng-click='fPartita17()'>17° Partita</a></li>
+              <li><a ng-click='fPartita18()'>18° Partita</a></li>
+              <li><a ng-click='fPartita19()'>19° Partita</a></li>
+            </ul>
+          </div> 
+        </div>
 
-            <p>
-              <a class="btn btn-lg btn-success" ng-click="takeShort()">Inserisci Biglietto
-                <span class="glyphicon glyphicon-ok"></span>
-              </a>
-            </p>
-              <div ng-show="my.message" class="alert alert-success">{{esito}}
-                <a ng-href={{rispostaJson}}> <span class="glyphicon glyphicon-stats" style="float:right"></span></a>
-              </div>
-              <div ng-show="err" class="alert alert-danger">{{esito}}</div>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <p>
+          <a class="btn btn-lg btn-success" ng-click="takeShort()">Inserisci Biglietto
+            <span class="glyphicon glyphicon-ok"></span>
+          </a>
+        </p>
+        <div ng-show="my.message" class="alert alert-success">{{esito}}
+          <a ng-href={{rispostaJson}}> <span class="glyphicon glyphicon-stats" style="float:right"></span></a>
         </div>
-        </div>
-    </form> 
+        <div ng-show="err" class="alert alert-danger">{{esito}}</div>
+      </div>
+    </div>
+  </form> 
 </div>
 
+<span class="btn-group btn-block col-sm-10"></span>
+<span class="btn-group btn-block col-sm-10"></span>
+<span class="btn-group btn-block col-sm-10"></span>
+
+<span class="btn-group btn-block col-sm-10"></span>
+<span class="btn-group btn-block col-sm-10"></span>
+<span class="btn-group btn-block col-sm-10"></span>
+<h2 class="text-center">Registrazione</h2>
+
 <div class="jumbotron">
-<form role="form">
-      <div class="row marketing">
-        <div class="form-group">
-        <p>
-            <input type="text" ng-model="cf" placeholder="Codice Fiscale" class="form-control input-lg">
-          </p>
+  <form role="form">
+
+
+
+
+<!--
+            <button type="button" id="btnOUs"      class="btn btn-primary" ng-click="levelOU()">Organization Unitss </button>
+            <button type="button" id="btnchiefdom" class="btn btn-primary" ng-click="levelCD()">Chiefdom</button>
+            <button type="button" id="btndistrict" class="btn btn-primary" ng-click="levelD()">District </button>
+            <button type="button" id="btnfaciltiy" class="btn btn-primary" ng-click="levelF()">Facility </button>
+          -->
+
+          <div class="btn-group row">
+            <button type="button" id="btnOUs" class="btn btn-primary" ng-click="levelOU()" ng-model="tipo" btn-radio="'SPETTATORE'">Spettatore</label>
+
+              <button type="button" id="btnchiefdom" class="btn btn-primary" ng-click="levelCD()"ng-model="tipo" btn-radio="'PASSHOLDER'">Passholder</label>
+
+              </div>
+
+              <div class="row marketing">
+                <div class="form-group">
+
+                  <p>
+                    <input type="text" ng-model="cf" placeholder="Codice Fiscale" class="form-control input-lg">
+                  </p>
+
+<!--
+
           <p>
             <input type="text" ng-model="tipo" placeholder="Tipo" class="form-control input-lg">
           </p>
-          <p>
-            <input type="text" ng-model="nome" placeholder="Nome" class="form-control input-lg">
-          </p>
-          <p>
-            <input type="text" ng-model="cognome" placeholder="Cognome" class="form-control input-lg">
-          </p>
-          <div class="form-group row">
-                <div class="col-sm-4">
-                  <input type="text" ng-model="giorno" placeholder="giorno" class="form-control input-lg">
-                </div>
-                <div class="col-sm-4">
-                  <input type="text" ng-model="mese" placeholder="mese" class="form-control input-lg">
-                </div>
-                <div class="col-sm-4">
-                  <input type="text" ng-model="anno" placeholder="anno" class="form-control input-lg">
-                </div>
-              </div>
-              <p>
-            <input type="text" ng-model="luogoNascita" placeholder="Luogo di nascita" class="form-control input-lg">
-          </p>
-          <p>
-            <input type="text" ng-model="telefono" placeholder="Telefono" class="form-control input-lg">
-          </p>
-          <p>
-            <a class="btn btn-lg btn-success" ng-click="inserisciPersona()">Inserisci persona
-              <span class="glyphicon glyphicon-ok"></span>
-            </a>
-          </p>
-          <p>
-            <div ng-show="esitoS" class="alert alert-success">
-            {{esito}}<a ng-href={{rispostaJson.stats}}> <span class="glyphicon glyphicon-stats" style="float:right"></span></a>
-            </div>
-          </p>
-          <p>
-            <div ng-show="esitoE" class="alert alert-danger">{{err}}</div>
-          </p>
+        -->
+        <p>
+          <input type="text" ng-model="nome" placeholder="Nome" class="form-control input-lg">
+        </p>
+        <p>
+          <input type="text" ng-model="cognome" placeholder="Cognome" class="form-control input-lg">
+        </p>
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="text" ng-model="giorno" placeholder="giorno" class="form-control input-lg">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" ng-model="mese" placeholder="mese" class="form-control input-lg">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" ng-model="anno" placeholder="anno" class="form-control input-lg">
+          </div>
         </div>
+        <p>
+          <input type="text" ng-model="luogoNascita" placeholder="Luogo di nascita" class="form-control input-lg">
+        </p>
+        <p>
+          <input type="text" ng-model="telefono" placeholder="Telefono" class="form-control input-lg">
+        </p>
+        <p>
+          <a class="btn btn-lg btn-success" ng-click="inserisciPersona()">Inserisci persona
+            <span class="glyphicon glyphicon-ok"></span>
+          </a>
+        </p>
+        <p>
+          <div ng-show="esitoS" class="alert alert-success">
+            {{insPersonaSuccess}}<a ng-href={{rispostaJson.stats}}> <span class="glyphicon glyphicon-stats" style="float:right"></span></a>
+          </div>
+        </p>
+        <p>
+          <div ng-show="esitoE" class="alert alert-danger">{{insPersonaErr}}</div>
+        </p>
       </div>
-    </form> 
+    </div>
+  </form> 
 </div>
 
-
+<!--
 <div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>
   <p class="lead">
@@ -98,18 +182,27 @@
   <p><a class="btn btn-lg btn-success" ng-href="#/">Splendidos!<span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
 
+-->
+
 
 <div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
+  <h4>Settore</h4>
   <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+    Sezione verticale dello stadio. Parte da '001' e arriva a '010'.
   </p>
 
-  <h4>Angular</h4>
+  <h4>Anello</h4>
   <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
+    Sezione orizzontale dello stadio. Parte da '001' e arriva a '005'.
   </p>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <h4>Posto</h4>
+  <p>
+    CIsono 10.000 posti in totale. Ogni settore è diviso in 5 parti, quindi all'interno di ogni anello di ogni settore ci sono 200 posti. Parte da 1 e arriva a 199.
+  </p>
+
+  <h4>Biglietto</h4>
+  <p>
+    Il compratore del Biglietto deve essere già registrato come 'PASSHOLDER'.
+  </p>
 </div>
