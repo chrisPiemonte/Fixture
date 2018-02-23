@@ -1,4 +1,4 @@
-package com.database.systems.fixture.controller;
+package com.database.systems.fixture.controller.rest;
 
 import com.database.systems.fixture.common.entity.SquadraAvversaria;
 import com.database.systems.fixture.service.serviceInterface.ISquadraAvversariaService;

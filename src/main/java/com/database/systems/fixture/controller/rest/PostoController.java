@@ -1,4 +1,4 @@
-package com.database.systems.fixture.controller;
+package com.database.systems.fixture.controller.rest;
 
 import com.database.systems.fixture.common.entity.Posto;
 import com.database.systems.fixture.common.entity.composite.PostoId;

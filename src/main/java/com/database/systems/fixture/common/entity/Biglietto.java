@@ -31,7 +31,7 @@ public class Biglietto implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "prezzo_totale")
+    @Column(name = "prezzo_totale", nullable = true)
     private double prezzoTotale;
 
     @Column(name = "ora_acquisto")
@@ -61,10 +61,21 @@ public class Biglietto implements Serializable {
     public Biglietto() {
     }
 
-    public Biglietto(double prezzoTotale, Timestamp oraAcquisto, String stagione,
-                     int partita, int posto, String settore, String anello, String spettatore,
-                     String compratore) {
+    public Biglietto(double prezzoTotale, Timestamp oraAcquisto, String stagione, int partita,
+                     int posto, String settore, String anello, String spettatore, String compratore) {
         this.prezzoTotale = prezzoTotale;
+        this.oraAcquisto = oraAcquisto;
+        this.stagione = stagione;
+        this.partita = partita;
+        this.posto = posto;
+        this.settore = settore;
+        this.anello = anello;
+        this.spettatore = spettatore;
+        this.compratore = compratore;
+    }
+
+    public Biglietto(Timestamp oraAcquisto, String stagione, int partita, int posto,
+                     String settore, String anello, String spettatore, String compratore) {
         this.oraAcquisto = oraAcquisto;
         this.stagione = stagione;
         this.partita = partita;

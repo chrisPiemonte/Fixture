@@ -37,6 +37,11 @@ public class Posto implements Serializable {
         this.prezzo = prezzo;
     }
 
+    public Posto(PostoId numeroSettoreAnello, String tipo) {
+        this.numeroSettoreAnello = numeroSettoreAnello;
+        this.tipo = tipo;
+    }
+
     public PostoId getNumeroSettoreAnello() {
         return numeroSettoreAnello;
     }

@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by chris on 2/16/18.
  */
 
-@RestController
+//@RestController
 public class HelloController {
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String index() {
         return "Greetings from Spring Booty!";
     }
-
+*/
 }
