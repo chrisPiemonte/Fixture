@@ -121,15 +121,4 @@ public class Utilities {
         long diff = end - offset + 1;
         return new Timestamp(offset + (long)(Math.random() * diff));
     }
-
-
-
-
-
-
-    public static void main(String[] args) {
-        System.out.println(getRandomTimestamp());
-
-
-    }
 }

@@ -74,29 +74,4 @@ public class Posto implements Serializable {
                 ", prezzo=" + prezzo +
                 '}';
     }
-/*
-
-    public static void main(String[] args) {
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<Posto> posto = session.createQuery("FROM Posto").list();
-            posto.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-
-            Posto p1 = new Posto(new PostoId(12, "005", "005"), "PRESIDENTE", 40.00);
-            System.out.println("-- persisting persons --");
-            System.out.println(p1);
-
-            session.beginTransaction();
-            session.save(p1);
-            session.getTransaction().commit();
-
-        }
-
-
-    }
-
-    */
 }

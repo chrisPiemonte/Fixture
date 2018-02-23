@@ -83,29 +83,4 @@ public class Partita implements Serializable {
                 ", squadraAvversaria='" + squadraAvversaria + '\'' +
                 '}';
     }
-
-/*
-    public static void main(String[] args) {
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<Partita> partita = session.createQuery("FROM Partita").list();
-            partita.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-
-            Partita p1 = new Partita(new PartitaId(11, "1011"), LocalDate.now(), 1.5, "Pisa");
-            System.out.println("-- persisting persons --");
-            System.out.println(p1);
-
-            session.beginTransaction();
-            session.save(p1);
-            session.getTransaction().commit();
-
-        }
-
-
-    }
-
-    */
 }

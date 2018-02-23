@@ -70,27 +70,4 @@ public class Settore implements Serializable {
                 ", prezzoBase=" + prezzoBase +
                 '}';
     }
-
-
-    public static void main(String[] args){
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<Settore> settore = session.createQuery("FROM Settore").list();
-            settore.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-
-            Settore p1 = new Settore("00r", "gino", 100.00);
-            System.out.println("-- persisting persons --");
-            System.out.println(p1);
-
-            session.beginTransaction();
-            session.save(p1);
-            session.getTransaction().commit();
-
-        }
-
-    }
-
 }

@@ -71,30 +71,5 @@ public class Anello implements Serializable {
                 '}';
     }
 
-/*
-
-    public static void main(String[] args){
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<Anello> anello = session.createQuery("FROM Anello").list();
-            anello.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-
-            Anello p1 = new Anello("008", "gino", 100.00);
-            System.out.println("-- persisting persons --");
-            System.out.println(p1);
-
-            session.beginTransaction();
-            session.save(p1);
-            session.getTransaction().commit();
-
-        }
-
-}
-*/
-
-
 }
 

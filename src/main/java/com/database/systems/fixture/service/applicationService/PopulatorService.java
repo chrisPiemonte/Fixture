@@ -90,7 +90,7 @@ public class PopulatorService {
     public void populatePersona() {
         Utilities.readNames();
         Utilities.readSurnames();
-        IntStream.range(1, 3000).forEach(
+        IntStream.range(1, 700).forEach(
                 num -> {
                     Persona prs = new Persona(
                             getRandomCf(), "SPETTATORE", Utilities.getRandomName(), Utilities.getRandomSurname(),
@@ -100,7 +100,7 @@ public class PopulatorService {
                     personaRepository.addPersona(prs);
                 });
 
-        IntStream.range(1, 3000).forEach(
+        IntStream.range(1, 700).forEach(
                 num -> {
                     Persona prs = new Persona(
                             getRandomCf(), "PASSHOLDER", Utilities.getRandomName(), Utilities.getRandomSurname(),
@@ -143,14 +143,4 @@ public class PopulatorService {
         Arrays.stream(Utilities.stagioni).forEach(stg ->
                 stagioneRepository.addStagione(stg));
     }
-
-/*
-    public static void main(String[] args) {
-        long minDay = LocalDate.of(1970, 1, 1).toEpochDay();
-        long maxDay = LocalDate.of(2015, 12, 31).toEpochDay();
-        long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
-        LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
-        System.out.println(randomDate);
-    }*/
-
 }

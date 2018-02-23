@@ -181,38 +181,4 @@ public class Biglietto implements Serializable {
                 ", compratore='" + compratore + '\'' +
                 '}';
     }
-
-
-
-    public static void main(String[] args) {
-/*
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<Biglietto> y = session.createQuery("FROM Biglietto").list();
-            y.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-            session.close();
-*/
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Biglietto p2 = new Biglietto(10.00, Timestamp.valueOf(LocalDateTime.now()), "0001", 2, 1, "002", "002", "0123456789876913",
-                    "012345678d87691w");
-
-            System.out.println("\n\n\n" + p2.getOraAcquisto() + "\n\n\n");
-            System.out.println("-- persisting persons --");
-            System.out.println(p2);
-
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
-
-            session.save(p2);
-            session.getTransaction().commit()
-            ;
-        }
-
-    }
-
-
 }

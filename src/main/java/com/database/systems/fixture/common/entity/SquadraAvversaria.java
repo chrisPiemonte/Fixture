@@ -57,28 +57,4 @@ public class SquadraAvversaria implements Serializable {
                 ", citta='" + citta + '\'' +
                 '}';
     }
-
-    /*
-    public static void main(String[] args){
-
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<SquadraAvversaria> squadraAvversaria = session.createQuery("FROM SquadraAvversaria").list();
-            squadraAvversaria.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-
-            SquadraAvversaria p1 = new SquadraAvversaria("tino", "citta");
-            System.out.println("-- persisting persons --");
-            System.out.println(p1);
-
-            session.beginTransaction();
-            session.save(p1);
-            session.getTransaction().commit();
-
-        }
-
-    }
-    */
-
 }

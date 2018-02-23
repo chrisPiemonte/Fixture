@@ -121,25 +121,4 @@ public class Persona implements Serializable {
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
-
-    public static void main(String[] args){
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
-
-            Session session = sessionFactory.openSession();
-            @SuppressWarnings("unchecked")
-            List<Persona> persona = session.createQuery("FROM Persona").list();
-            persona.forEach((x) -> System.out.println("\n\n\n--------- " + x));
-
-            Persona p1 = new Persona("qwertyuioplkjh3f", "PASSHOLDER",
-                    "nomeee", "cognomeeeee", LocalDate.now(), "luogonascita", "0881555555");
-            System.out.println("-- persisting persons --");
-            System.out.println(p1);
-
-            session.beginTransaction();
-            session.save(p1);
-            session.getTransaction().commit();
-
-        }
-    }
-
 }
