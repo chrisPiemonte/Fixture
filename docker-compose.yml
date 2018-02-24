@@ -1,0 +1,22 @@
+version: '2'
+services:
+  dataonly:
+    image: chrispiemo/data-only
+  postgres:
+    image: postgres:10.2-alpine
+    environment:
+      - POSTGRES_PASSWORD=qwe
+      - POSTGRES_DB=fixture
+    volumes_from:
+     - dataonly
+    volumes:
+      - ./database/schema:/docker-entrypoint-initdb.d/
+  server:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+     - "8080:8080"
+    links:
+     - postgres:db
+    command: target/fixture-0.0.1-SNAPSHOT.jar
