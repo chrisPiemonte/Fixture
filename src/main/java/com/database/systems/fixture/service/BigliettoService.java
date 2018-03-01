@@ -29,13 +29,15 @@ public class BigliettoService implements IBigliettoService {
     }
 
     @Override
-    public boolean addBiglietto(Biglietto biglietto) {
-        if (bigliettoRepository.bigliettoExists(biglietto.getId()))
+    public Biglietto addBiglietto(Biglietto biglietto) {
+        return bigliettoRepository.addBiglietto(biglietto);
+        /*if (bigliettoRepository.bigliettoExists(biglietto.getId()))
             return false;
         else {
-            bigliettoRepository.addBiglietto(biglietto);
+            b = bigliettoRepository.addBiglietto(biglietto);
             return true;
-        }
+        }*/
+
     }
 
     @Override

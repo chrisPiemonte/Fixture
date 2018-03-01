@@ -25,7 +25,7 @@ public class PopulatorController {
     private IStagioneRepository stagioneRepository;
 
     @GetMapping("populate")
-    public ResponseEntity<Void> populate() {
+    public String populate() {
         boolean alreadyPopulated = stagioneRepository.stagioneExists("0001");
         if (!alreadyPopulated) {
             populatorService.populateStagione();
@@ -36,9 +36,9 @@ public class PopulatorController {
             populatorService.populatePosto();
             populatorService.populatePersona();
             populatorService.populateBiglietto();
-            HttpHeaders headers = new HttpHeaders();
-            return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+            // HttpHeaders headers = new HttpHeaders();
+            return "Done";
         }
-        return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        return "Already populated";
     }
 }

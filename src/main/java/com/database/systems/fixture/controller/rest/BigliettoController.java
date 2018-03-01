@@ -1,20 +1,17 @@
 package com.database.systems.fixture.controller.rest;
 
 import com.database.systems.fixture.common.entity.Biglietto;
-import com.database.systems.fixture.common.entity.Partita;
+import com.database.systems.fixture.common.entity.util.Analytics;
 import com.database.systems.fixture.service.serviceInterface.IBigliettoService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by chris on 2/21/18.
@@ -41,22 +38,28 @@ public class BigliettoController {
 
     @CrossOrigin
     @PostMapping("biglietto")
-    public ResponseEntity<HashMap> addBiglietto(@RequestBody Biglietto biglietto, UriComponentsBuilder builder) {
-        HashMap<String, String> map = new HashMap<>();
+    public ResponseEntity<Biglietto> addBiglietto(@RequestBody Biglietto biglietto, UriComponentsBuilder builder) {
+        ObjectMapper mapper = new ObjectMapper();
+        String logstashURL = "http://logstash:31311";
         biglietto.setOraAcquisto(new Timestamp(System.currentTimeMillis()));
-        boolean flag = bigliettoService.addBiglietto(biglietto);
-        if (!flag) {
-            map.put("key", "value");
-            map.put("foo", "bar");
-            map.put("aa", "bb");
-            return new ResponseEntity<HashMap>(map, HttpStatus.OK);
-        }
-        map.put("key", "value");
-        map.put("foo", "bar");
-        map.put("aa", "bb");
+        Biglietto insBiglietto = bigliettoService.addBiglietto(biglietto);
+
+        /*RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/biglietto/{id}").buildAndExpand(biglietto.getId()).toUri());
-        return new ResponseEntity<HashMap>(map, HttpStatus.OK);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> httpEntity = new HttpEntity<String>(gson.toJson(insBiglietto), headers);
+        try{
+            String response = restTemplate.postForObject(logstashURL, httpEntity, String.class);
+            System.out.println(response);
+        }catch( Exception e){
+            e.printStackTrace();
+        }*/
+        try {
+            Analytics.sendJson(mapper.writeValueAsString(insBiglietto));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<Biglietto>(insBiglietto, HttpStatus.OK);
     }
 
     @PutMapping("biglietto")

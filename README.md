@@ -1,6 +1,6 @@
 # Fixture <img src="https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/src/main/resources/static/images/logo_mini.d9252743.png?token=AJohXj5CL3cGEQo1QKfLO61AcODy-9kIks5amfafwA%3D%3D" width="64">
 
-[![Docker Stars](https://img.shields.io/docker/stars/_/ubuntu.svg?style=flat-square)](https://www.docker.com/) [![AngularJS version](https://img.shields.io/badge/AngularJS-1.4.0-red.svg?style=flat-square)](https://angular.io/) [![Spring Boot](https://img.shields.io/badge/Spring-1.5.10-green.svg?style=flat-square)](https://spring.io/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-10.2-blue.svg?style=flat-square)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-17.05-blue.svg?style=flat-square)](https://www.docker.com/) [![AngularJS version](https://img.shields.io/badge/AngularJS-1.4.0-red.svg?style=flat-square)](https://angular.io/) [![Spring Boot](https://img.shields.io/badge/Spring-1.5.10-green.svg?style=flat-square)](https://spring.io/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-10.2-blue.svg?style=flat-square)](https://www.postgresql.org/)
 
 **Ticketing system** service composed of three layers:
 
@@ -8,7 +8,7 @@
 
  - **Server**: Server Side Application exposed over http made using **[Spring Boot](https://spring.io/)**
 
- - **Database**: **[PostgreSQL](https://www.postgresql.org/))**
+ - **Database**: **[PostgreSQL](https://www.postgresql.org/)**
 
 Everything runs inside **[Docker](https://www.docker.com/)** containers, linked together with **[Docker Compose](https://docs.docker.com/compose/overview/)**
 

@@ -13,7 +13,7 @@ public interface IBigliettoRepository {
 
     Biglietto getBigliettoById(int bigliettoId);
 
-    void addBiglietto(Biglietto biglietto);
+    Biglietto addBiglietto(Biglietto biglietto);
 
     void updateBiglietto(Biglietto biglietto);
 

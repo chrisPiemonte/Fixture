@@ -12,7 +12,7 @@ public interface IBigliettoService {
 
     Biglietto getBigliettoById(int bigliettoId);
 
-    boolean addBiglietto(Biglietto biglietto);
+    Biglietto addBiglietto(Biglietto biglietto);
 
     void updateBiglietto(Biglietto biglietto);
 

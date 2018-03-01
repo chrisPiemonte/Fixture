@@ -36,8 +36,10 @@ public class BigliettoRepository implements IBigliettoRepository {
     }
 
     @Override
-    public void addBiglietto(Biglietto biglietto) {
+    public Biglietto addBiglietto(Biglietto biglietto) {
         entityManager.persist(biglietto);
+        entityManager.flush();
+        return biglietto;
     }
 
     @Override

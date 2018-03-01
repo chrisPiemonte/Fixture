@@ -3,7 +3,9 @@ package com.database.systems.fixture.service.applicationService;
 import com.database.systems.fixture.common.entity.*;
 import com.database.systems.fixture.common.entity.composite.PartitaId;
 import com.database.systems.fixture.common.entity.composite.PostoId;
+import com.database.systems.fixture.common.entity.util.Analytics;
 import com.database.systems.fixture.repository.repositoryInterface.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +52,7 @@ public class PopulatorService {
     }
 
     public void populateBiglietto() {
+        ObjectMapper mapper = new ObjectMapper();
         partite.forEach(prt -> {
             Arrays.stream(Utilities.settori).forEach(str -> {
                 Arrays.stream(Utilities.anelli).forEach(anl -> {
@@ -65,7 +68,12 @@ public class PopulatorService {
                                         persone.get(getRandomIndex(persone.size())).getCf(),
                                         passholders.get(getRandomIndex(passholders.size())).getCf()
                                 );
-                                bigliettoRepository.addBiglietto(bglt);
+                                Biglietto insBiglietto = bigliettoRepository.addBiglietto(bglt);
+                                try{
+                                    Analytics.sendJson(mapper.writeValueAsString(insBiglietto));
+                                }catch(Exception e){
+                                    e.printStackTrace();
+                                }
                             });
                 });
             });

@@ -1,22 +1,82 @@
 version: '2'
 services:
+
   dataonly:
     image: chrispiemo/data-only
+    networks:
+      - elk
+
   postgres:
     image: postgres:10.2-alpine
     environment:
       - POSTGRES_PASSWORD=qwe
       - POSTGRES_DB=fixture
+    networks:
+      - elk
     volumes_from:
      - dataonly
     volumes:
       - ./database/schema:/docker-entrypoint-initdb.d/
+
   server:
     build: .
     depends_on:
       - postgres
     ports:
      - "8080:8080"
+    networks:
+      - elk
     links:
      - postgres:db
+     - logstash:log
     command: target/fixture-0.0.1-SNAPSHOT.jar
+
+  elasticsearch:
+    build:
+      context: elastic-stack/elasticsearch/
+    volumes:
+      - ./elastic-stack/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - postgres
+
+  logstash:
+    build:
+      context: elastic-stack/logstash/
+    volumes:
+      - ./elastic-stack/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./elastic-stack/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "5000:5000"
+      - "31311:31311"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+      - postgres
+
+  kibana:
+    build:
+      context: elastic-stack/kibana/
+    volumes:
+      - ./elastic-stack/kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+      - postgres
+
+networks:
+
+  elk:
+    driver: bridge
