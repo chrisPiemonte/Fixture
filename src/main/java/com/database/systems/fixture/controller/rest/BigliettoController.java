@@ -44,21 +44,9 @@ public class BigliettoController {
         biglietto.setOraAcquisto(new Timestamp(System.currentTimeMillis()));
         Biglietto insBiglietto = bigliettoService.addBiglietto(biglietto);
 
-        /*RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> httpEntity = new HttpEntity<String>(gson.toJson(insBiglietto), headers);
-        try{
-            String response = restTemplate.postForObject(logstashURL, httpEntity, String.class);
-            System.out.println(response);
-        }catch( Exception e){
-            e.printStackTrace();
-        }*/
         try {
             Analytics.sendJson(mapper.writeValueAsString(insBiglietto));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        }catch(Exception e){ e.printStackTrace(); }
         return new ResponseEntity<Biglietto>(insBiglietto, HttpStatus.OK);
     }
 

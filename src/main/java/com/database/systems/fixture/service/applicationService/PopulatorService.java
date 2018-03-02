@@ -56,25 +56,22 @@ public class PopulatorService {
         partite.forEach(prt -> {
             Arrays.stream(Utilities.settori).forEach(str -> {
                 Arrays.stream(Utilities.anelli).forEach(anl -> {
-                    IntStream.range(1, 2).forEach(
-                            num -> {
-                                Biglietto bglt = new Biglietto(
-                                        Utilities.getRandomTimestamp(),
-                                        prt.getNumeroAndStagione().getStagione(),
-                                        prt.getNumeroAndStagione().getNumero(),
-                                        num,
-                                        str.getId(),
-                                        anl.getId(),
-                                        persone.get(getRandomIndex(persone.size())).getCf(),
-                                        passholders.get(getRandomIndex(passholders.size())).getCf()
-                                );
-                                Biglietto insBiglietto = bigliettoRepository.addBiglietto(bglt);
-                                try{
-                                    Analytics.sendJson(mapper.writeValueAsString(insBiglietto));
-                                }catch(Exception e){
-                                    e.printStackTrace();
-                                }
-                            });
+                    IntStream.range(1, Utilities.getRandomNumber(4)).forEach(num -> {
+                        Biglietto bglt = new Biglietto(
+                                Utilities.getRandomTimestamp(),
+                                prt.getNumeroAndStagione().getStagione(),
+                                prt.getNumeroAndStagione().getNumero(),
+                                num,
+                                str.getId(),
+                                anl.getId(),
+                                persone.get(getRandomIndex(persone.size())).getCf(),
+                                passholders.get(getRandomIndex(passholders.size())).getCf()
+                        );
+                        Biglietto insBiglietto = bigliettoRepository.addBiglietto(bglt);
+                        try {
+                            Analytics.sendJson(mapper.writeValueAsString(insBiglietto));
+                        } catch (Exception e) { e.printStackTrace(); }
+                    });
                 });
             });
         });
@@ -86,7 +83,8 @@ public class PopulatorService {
                     num -> {
                         Partita prt = new Partita(
                                 new PartitaId(num, stg.getAnno()),
-                                Utilities.getRandomDate(2000, 1, 1), 1.0,
+                                Utilities.getRandomDate(2000, 1, 1),
+                                1.0,
                                 Utilities.squadre[getRandomIndex(Utilities.squadre.length)].getNome()
                         );
                         partite.add(prt);

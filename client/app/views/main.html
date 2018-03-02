@@ -5,6 +5,62 @@
   <form role="form">
     <div class="row marketing">
       <div class="form-group">
+
+
+
+
+
+        <div class="row">
+          <div class="btn-group col-md-4 container" ng-class='{open1: open1}'>
+            <button class="btn btn-default col-md-10" style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;" ng-model="settore" >{{settore}}</button>
+            <button class="btn dropdown-toggle  col-md-2" style="padding: 8px 10px;" data-toggle="dropdown" ng-click='open1=!open1'>
+              <span class="caret "></span>
+            </button>
+            <ul class="dropdown-menu ">
+              <li><a ng-click='fSettore001()'>Curva Nord Est</a></li>
+              <li><a ng-click='fSettore002()'>Curva Nord Ovest</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fSettore003()'>Curva Sud Est</a></li>
+              <li><a ng-click='fSettore004()'>Curva Sud Ovest</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fSettore005()'>Tribuna Est</a></li>
+              <li><a ng-click='fSettore006()'>Tribuna Centro</a></li>
+              <li><a ng-click='fSettore007()'>Tribuna Ovest</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fSettore008()'>Gradinata Est</a></li>
+              <li><a ng-click='fSettore009()'>Gradinata Centro</a></li>
+              <li><a ng-click='fSettore010()'>Gradinata Ovest</a></li>
+            </ul>
+          </div>
+          <div class="btn-group col-md-4 container" ng-class='{open1: open1}'>
+            <button class="btn btn-default col-md-10"  style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;" ng-model="anello" >{{anello}}</button>
+            <button class="btn dropdown-toggle  col-md-2"  style="padding: 8px 10px;" data-toggle="dropdown" ng-click='open1=!open1'>
+              <span class="caret "></span>
+            </button>
+            <ul class="dropdown-menu ">
+              <li><a ng-click='fAnello001()'>Primo inferiore</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fAnello002()'>Secondo inferiore</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fAnello003()'>Primo superiore</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fAnello004()'>Secondo superiore</a></li>
+            <li class="divider"></li>
+              <li><a ng-click='fAnello005()'>Terzo superiore</a></li>
+            </ul>
+          </div>
+           <div class="col-sm-4">
+            <input type="text" ng-model="posto" placeholder="Posto" class="form-control input-lg">
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <!--
         <div class="form-group row">
           <div class="col-sm-4">
             <input type="text" ng-model="settore" placeholder="Settore" class="form-control input-lg">
@@ -16,16 +72,25 @@
             <input type="text" ng-model="posto" placeholder="Posto" class="form-control input-lg">
           </div>
         </div>
+
+        -->
+
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+        <span class="btn-group btn-block col-sm-10"></span>
+
+
         <p>
           <input type="text" ng-model="spettatore" placeholder="Spettatore" class="form-control input-lg">
         </p>
         <p>
           <input type="text" ng-model="compratore" placeholder="Compratore" class="form-control input-lg">
         </p>
-        <div >
-          <div class="btn-group gap" ng-class='{open1: open1}'>
-            <button class="btn btn-default " ng-model="stagione" >{{stagione}}</button>
-            <button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open1=!open1'>
+        <div class="mw-100 container center-block">
+          <div class="btn-group col-md-5 container col-md-offset-1" ng-class='{open1: open1}'>
+            <button class="btn btn-default col-md-10 " style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;" ng-model="stagione" >{{stagione}}</button>
+            <button class="btn dropdown-toggle col-md-2 " style="padding: 8px 10px; " data-toggle="dropdown" ng-click='open1=!open1'>
               <span class="caret "></span>
             </button>
             <ul class="dropdown-menu ">
@@ -41,9 +106,9 @@
               <li><a ng-click='fStagione0910()'>2009 / 2010</a></li>
             </ul>
           </div>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="btn-group gap" ng-class='{open2: open2}'>
-            <button class="btn btn-default " ng-model="partita" >{{partita}}</button>
-            <button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open2=!open2'>
+          <div class="btn-group col-md-5 container" ng-class='{open2: open2}'>
+            <button class="btn btn-default col-md-10" style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;" ng-model="partita" >{{partita}}</button>
+            <button class="btn dropdown-toggle col-md-2" style="padding: 8px 10px;" data-toggle="dropdown" ng-click='open2=!open2'>
               <span class="caret "></span>
             </button>
             <ul class="dropdown-menu ">
@@ -186,6 +251,14 @@
 
 
 <div class="row marketing">
+  <h4>Inserimento Biglietto</h4>
+  <p>
+    Per inserire un biglietto è necessario che il compratore sia già registrato come PASSHOLDER, e lo spettatore sia già registrato (o come SPETTATORE o come PASSHOLDER).
+  </p>
+  <h4>Posto</h4>
+  <p>
+    Ci sono 10.000 posti in totale. In tutto ci sono 10 settori. Ogni settore è diviso in 5 parti, in base all'anello, quindi all'interno di ogni anello di ogni settore ci sono 200 posti. Parte da 1 e arriva a 199.
+  </p>
   <h4>Settore</h4>
   <p>
     Sezione verticale dello stadio. Parte da '001' e arriva a '010'.
@@ -194,15 +267,5 @@
   <h4>Anello</h4>
   <p>
     Sezione orizzontale dello stadio. Parte da '001' e arriva a '005'.
-  </p>
-
-  <h4>Posto</h4>
-  <p>
-    CIsono 10.000 posti in totale. Ogni settore è diviso in 5 parti, quindi all'interno di ogni anello di ogni settore ci sono 200 posti. Parte da 1 e arriva a 199.
-  </p>
-
-  <h4>Biglietto</h4>
-  <p>
-    Il compratore del Biglietto deve essere già registrato come 'PASSHOLDER'.
   </p>
 </div>

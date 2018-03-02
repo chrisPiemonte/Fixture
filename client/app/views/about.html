@@ -1,14 +1,14 @@
 	<p align="center"><a href="#/"><img src="images/frontm.png" class="img-responsive"></a></p>
 	
 	<div class="jumbotron">
-		<form role="form btn-block">
-			<div class="form-group row btn-block">
-				<div class="col-sm-4 ">
-					<!--<input type="text" ng-model="stagione" placeholder="stagione" class="form-control input-lg">-->
+		<form role="form">
+			<div class="form-group ">
 
-					<div class="btn-group " ng-class='{open1: open1}'>
-						<button class="btn btn-default " ng-model="stagione" >{{stagione}}</button>
-						<button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open1=!open1'>
+
+				<div class="row">
+					<div class="btn-group col-md-4 container" ng-class='{open1: open1}'>
+						<button class="btn btn-default col-md-10"  style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;"ng-model="stagione" >{{stagione}}</button>
+						<button class="btn dropdown-toggle  col-md-2" style="padding: 8px 10px;" data-toggle="dropdown" ng-click='open1=!open1'>
 							<span class="caret "></span>
 						</button>
 						<ul class="dropdown-menu ">
@@ -25,13 +25,9 @@
 						</ul>
 					</div>	
 
-				</div>
-				<div class="col-sm-4">
-					<!--<input type="text" ng-model="partita" placeholder="partita" class="form-control input-lg">-->
-
-					<div class="btn-group " ng-class='{open2: open2}'>
-						<button class="btn btn-default " ng-model="partita" >{{partita}}</button>
-						<button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open2=!open2'>
+					<div class="btn-group col-md-4 container" ng-class='{open2: open2}'>
+						<button class="btn btn-default col-md-10" style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;" ng-model="partita" >{{partita}}</button>
+						<button class="btn dropdown-toggle col-md-2 "  style="padding: 8px 10px;" data-toggle="dropdown" ng-click='open2=!open2'>
 							<span class="caret "></span>
 						</button>
 						<ul class="dropdown-menu ">
@@ -56,23 +52,23 @@
 							<li><a ng-click='fPartita19()'>19° Partita</a></li>
 						</ul>
 					</div>	
-				</div>
-				<div class="col-sm-4">
-					<!--<input type="text" ng-model="settore" placeholder="settore" class="form-control input-lg">-->
 
-					<div class="btn-group" ng-class='{open3: open3}'>
-						<button class="btn btn-default " ng-model="settore" >{{settore}}</button>
-						<button class="btn dropdown-toggle " data-toggle="dropdown" ng-click='open3=!open3'>
+					<div class="btn-group col-md-4 container" ng-class='{open3: open3}'>
+						<button class="btn btn-default  col-md-10"  style="padding: 8px 16px; color: #989898; font-size:18; text-align: left;" ng-model="settore" >{{settore}}</button>
+						<button class="btn dropdown-toggle  col-md-2"  style="padding: 8px 10px;" data-toggle="dropdown" ng-click='open3=!open3'>
 							<span class="caret "></span>
 						</button>
 						<ul class="dropdown-menu ">
 							<li><a ng-click='fSettore001()'>Curva Nord Est</a></li>
 							<li><a ng-click='fSettore002()'>Curva Nord Ovest</a></li>
+            				<li class="divider"></li>
 							<li><a ng-click='fSettore003()'>Curva Sud Est</a></li>
 							<li><a ng-click='fSettore004()'>Curva Sud Ovest</a></li>
+            				<li class="divider"></li>
 							<li><a ng-click='fSettore005()'>Tribuna Est</a></li>
 							<li><a ng-click='fSettore006()'>Tribuna Centro</a></li>
 							<li><a ng-click='fSettore007()'>Tribuna Ovest</a></li>
+            				<li class="divider"></li>
 							<li><a ng-click='fSettore008()'>Gradinata Est</a></li>
 							<li><a ng-click='fSettore009()'>Gradinata Centro</a></li>
 							<li><a ng-click='fSettore010()'>Gradinata Ovest</a></li>
@@ -81,8 +77,13 @@
 					<span class="btn-group btn-block col-sm-10"></span>
 					<span class="btn-group btn-block col-sm-10"></span>
 					<span class="btn-group btn-block col-sm-10"></span>
+					<span class="btn-group btn-block col-sm-10"></span>
+					<span class="btn-group btn-block col-sm-10"></span>
 				</div>
 			</div>
+
+
+
 			<p>
 				<a class="btn btn-lg btn-success" ng-click="trovaPresenze()">
 					Vedi presenze nel settore <span class="glyphicon glyphicon-ok"></span>

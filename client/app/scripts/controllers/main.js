@@ -20,8 +20,8 @@
  	$scope.stagione = "Stagione";
  	$scope.partita = "Partita";
 
- 	$scope.settore    = "";
- 	$scope.anello     = "";
+ 	$scope.settore    = "Settore";
+ 	$scope.anello     = "Anello";
  	$scope.posto      = "";
  	$scope.spettatore = "";
  	$scope.compratore = "";
@@ -86,15 +86,17 @@
 
  		res.then(function(response) {
  			console.log('Inserted!');
- 			console.log(response.data.aa);
- 			$scope.settore    = "";
- 			$scope.anello     = "";
+ 			console.log(response.data);
+ 			console.log(response.data.prezzoTotale);
+ 			$scope.prezzo = response.data.prezzoTotale;
+ 			$scope.settore    = "Settore";
+ 			$scope.anello     = "Anello";
  			$scope.posto      = "";
  			$scope.spettatore = "";
  			$scope.compratore = "";
  			$scope.rispostaJson = response;
  			$scope.my.message = true;
- 			$scope.esito =  "Inserimento avvenuto con successo";
+ 			$scope.esito =  "Inserimento avvenuto con successo - Prezzo: " + $scope.prezzo + "€";
  			console.log($location.host());
  			$scope.err = "";
  		});
@@ -134,6 +136,24 @@
  		$scope.tipo = "PASSHOLDER";
  		console.log($scope.tipo);
  	}
+
+
+ 	$scope.fSettore001 = function() { $scope.settore = "001"; }
+ 	$scope.fSettore002 = function() { $scope.settore = "002"; }
+ 	$scope.fSettore003 = function() { $scope.settore = "003"; }
+ 	$scope.fSettore004 = function() { $scope.settore = "004"; }
+ 	$scope.fSettore005 = function() { $scope.settore = "005"; }
+ 	$scope.fSettore006 = function() { $scope.settore = "006"; }
+ 	$scope.fSettore007 = function() { $scope.settore = "007"; }
+ 	$scope.fSettore008 = function() { $scope.settore = "008"; }
+ 	$scope.fSettore009 = function() { $scope.settore = "009"; }
+ 	$scope.fSettore010 = function() { $scope.settore = "010"; }
+
+ 	$scope.fAnello001 = function() { $scope.anello = "001"; }
+ 	$scope.fAnello002 = function() { $scope.anello = "002"; }
+ 	$scope.fAnello003 = function() { $scope.anello = "003"; }
+ 	$scope.fAnello004 = function() { $scope.anello = "004"; }
+ 	$scope.fAnello005 = function() { $scope.anello = "005"; }
 
  	$scope.fStagione0001 = function() { $scope.stagione = "0001"; }
  	$scope.fStagione0102 = function() { $scope.stagione = "0102"; }

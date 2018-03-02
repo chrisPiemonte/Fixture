@@ -76,6 +76,11 @@ public class Utilities {
         return rnd.nextInt(i);
     }
 
+    public static int getRandomNumber(int max){
+        int min = 1;
+        return rnd.nextInt(max - min + 1) + min;
+    }
+
     public static String getRandomCf(){
         String c = String.valueOf(counter);
         int len = 16 - c.length();
@@ -121,4 +126,12 @@ public class Utilities {
         long diff = end - offset + 1;
         return new Timestamp(offset + (long)(Math.random() * diff));
     }
+
+
+    /*public static void main(String[] args){
+        Timestamp n = Timestamp.valueOf("2000-01-01 00:00:00");
+        System.out.println(n);
+
+    }*/
+
 }

@@ -179,7 +179,7 @@ CREATE TRIGGER posto_occupato_trigger
 
 /* ----------------------------------------------------- */
 
-/* trigger che crea automaticamente la partizione di biglietti all'inserimento di una nuova stagione */
+/* trigger che crea automaticamente la partizione della tabella biglietto all'inserimento di una nuova stagione */
 CREATE OR REPLACE FUNCTION create_partition_table() 
 RETURNS TRIGGER AS $$
 BEGIN
