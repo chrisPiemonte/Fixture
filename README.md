@@ -8,6 +8,7 @@
 [![Logstash](https://img.shields.io/badge/Logstash-6.2.1-blue.svg?style=flat-square)](https://www.elastic.co/products/logstash)
 [![Kibana](https://img.shields.io/badge/Kibana-6.2.1-ff69b4.svg?style=flat-square)](https://www.elastic.co/products/kibana)
 
+
 **Ticketing system** service composed of three layers:
 
  - **Client**: Single Page Application made using **[AngularJS](https://angular.io/)**
@@ -16,8 +17,9 @@
 
  - **Database**: **[PostgreSQL](https://www.postgresql.org/)**
 
+<p align="justify">
 Everything runs inside **[Docker](https://www.docker.com/)** containers, linked together with **[Docker Compose](https://docs.docker.com/compose/overview/)**. As Analytics framework, the **[Elastic Stack](https://www.elastic.co/products)** has been used by sending data of interest to Elastic Search, through Logstash, and querying and analyzing it with Kibana.
-
+</p>
 
 ## Setup
 
@@ -36,6 +38,13 @@ Everything runs inside **[Docker](https://www.docker.com/)** containers, linked 
 3. To populate the Database go to <pre>http://localhost:8080/api/populate</pre> (it takes a while)
 
 ## Overview
+- [Database](https://github.com/chrisPiemonte/Fixture#database)
+- [Server](https://github.com/chrisPiemonte/Fixture#server)
+- [Client](https://github.com/chrisPiemonte/Fixture#client)
+- [Analytics](https://github.com/chrisPiemonte/Fixture#analytics)
+
+#### Database
+
 ###### Requirements
 
 <table>
@@ -50,4 +59,35 @@ Everything runs inside **[Docker](https://www.docker.com/)** containers, linked 
 
 ###### ER Schema
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![ER Schema](https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/documentation/img/er.png "ER Schema")
+
+###### PostgreSQL Schema
+
+The schema is defined in [database/schema.sql](https://github.com/chrisPiemonte/Fixture/blob/master/database/schema/schema.sql).
+
+###### Physical Schema
+
+<p align="justify">
+Table Biglietto (Ticket) has been partitioned via table inheritance. Each partition is automatically created, as a child table, at the insertion of a new Stagione (Season), so there is a partition for each row in Stagione. The parent table itself is normally empty; it exists just to represent the entire table when queried. Insertions are redirected to child tables via [triggers](https://github.com/chrisPiemonte/Fixture/blob/master/database/schema/schema.sql#L80).
+
+</br></br>
+
+Table constraints are added to each child table to define the allowed key values in each partition. Constraint exclusion is a query optimization technique that improves performance for partitioned tables. Without constraint exclusion, the above query would scan each of the partitions of the measurement table. With constraint exclusion enabled (or set to PARTITION), the planner will examine the constraints of each partition and try to prove that the partition need not be scanned because it could not contain any rows meeting the query's WHERE clause. When the planner can prove this, it excludes the partition from the query plan.
+
+</br></br>
+![Explain](https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/documentation/img/esplain_partition.png "Explain")
+
+</br></br>
+
+This implementation is based on the official documentation as explained [here](https://www.postgresql.org/docs/9.1/static/ddl-partitioning.html).
+
+ </p>
+
+#### Server
+REAST API with [Spring Boot](https://projects.spring.io/spring-boot/) and ORM with [Hibernate](http://hibernate.org/)
+
+#### Client
+Single page application with [AngularJS](https://angular.io/).
+
+#### Analytics
+Insertions on table Biglietto are sent to [Logstash](https://www.elastic.co/products/logstash), as JSONs, through HTTP requests, which filters and send them to [Elastic Search](https://www.elastic.co/products/elasticsearch). Charts, dashboards and UI are provided by [Kibana](https://www.elastic.co/products/kibana).
