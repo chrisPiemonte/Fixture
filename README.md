@@ -1,4 +1,4 @@
-# Fixture <img src="https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/src/main/resources/static/images/logo_mini.d9252743.png?token=AJohXj5CL3cGEQo1QKfLO61AcODy-9kIks5amfafwA%3D%3D" width="40">
+# Fixture <img src="https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/src/main/resources/static/images/logo_mini.d9252743.png?token=AJohXj5CL3cGEQo1QKfLO61AcODy-9kIks5amfafwA%3D%3D" width="50">
 
 [![Docker](https://img.shields.io/badge/Docker-17.05-blue.svg?style=flat-square)](https://www.docker.com/)
 [![AngularJS version](https://img.shields.io/badge/AngularJS-1.4.0-red.svg?style=flat-square)](https://angular.io/)
