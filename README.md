@@ -18,7 +18,7 @@
  - **Database**: **[PostgreSQL](https://www.postgresql.org/)**
 
 <p align="justify">
-Everything runs inside **[Docker](https://www.docker.com/)** containers, linked together with **[Docker Compose](https://docs.docker.com/compose/overview/)**. As Analytics framework, the **[Elastic Stack](https://www.elastic.co/products)** has been used by sending data of interest to Elastic Search, through Logstash, and querying and analyzing it with Kibana.
+Everything runs inside <a href="https://www.docker.com/"><b>Docker</b></a> containers, linked together with <a href="https://docs.docker.com/compose/overview/"><b>Docker Compose</b></a>. As Analytics framework, the <a href="https://www.elastic.co/products"><b>Elastic Stack</b></a> has been used by sending data of interest to Elastic Search, through Logstash, and querying and analyzing it with Kibana.
 </p>
 
 ## Setup
@@ -43,7 +43,7 @@ Everything runs inside **[Docker](https://www.docker.com/)** containers, linked 
 - [Client](https://github.com/chrisPiemonte/Fixture#client)
 - [Analytics](https://github.com/chrisPiemonte/Fixture#analytics)
 
-#### Database
+### Database
 
 ###### Requirements
 
@@ -57,37 +57,38 @@ Everything runs inside **[Docker](https://www.docker.com/)** containers, linked 
   </tr>
 </table>
 
-###### ER Schema
+##### ER Schema
 
 ![ER Schema](https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/documentation/img/er.png "ER Schema")
 
-###### PostgreSQL Schema
+##### PostgreSQL Schema
 
-The schema is defined in [database/schema.sql](https://github.com/chrisPiemonte/Fixture/blob/master/database/schema/schema.sql).
+The schema is defined in <a href="https://github.com/chrisPiemonte/Fixture/blob/master/database/schema/schema.sql">database/schema.sql</a>.
 
-###### Physical Schema
+##### Physical Schema
 
 <p align="justify">
-Table Biglietto (Ticket) has been partitioned via table inheritance. Each partition is automatically created, as a child table, at the insertion of a new Stagione (Season), so there is a partition for each row in Stagione. The parent table itself is normally empty; it exists just to represent the entire table when queried. Insertions are redirected to child tables via [triggers](https://github.com/chrisPiemonte/Fixture/blob/master/database/schema/schema.sql#L80).
+Table Biglietto (Ticket) has been partitioned via table inheritance. Each partition is automatically created, as a child table, at the insertion of a new Stagione (Season), so there is a partition for each row in Stagione. The parent table itself is normally empty; it exists just to represent the entire table when queried. Insertions are redirected to child tables via <a href="https://github.com/chrisPiemonte/Fixture/blob/master/database/schema/schema.sql#L80">triggers</a>.
 
-</br></br>
+</br>
 
 Table constraints are added to each child table to define the allowed key values in each partition. Constraint exclusion is a query optimization technique that improves performance for partitioned tables. Without constraint exclusion, the above query would scan each of the partitions of the measurement table. With constraint exclusion enabled (or set to PARTITION), the planner will examine the constraints of each partition and try to prove that the partition need not be scanned because it could not contain any rows meeting the query's WHERE clause. When the planner can prove this, it excludes the partition from the query plan.
 
-</br></br>
-![Explain](https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/documentation/img/esplain_partition.png "Explain")
+</br>
 
-</br></br>
+![Explain](https://raw.githubusercontent.com/chrisPiemonte/Fixture/master/documentation/img/explain_partition.png "Explain")
+
 
 This implementation is based on the official documentation as explained [here](https://www.postgresql.org/docs/9.1/static/ddl-partitioning.html).
+</p></br>
 
- </p>
+### Server
+REST API with [Spring Boot](https://projects.spring.io/spring-boot/) and ORM with [Hibernate](http://hibernate.org/)
+</br></br>
 
-#### Server
-REAST API with [Spring Boot](https://projects.spring.io/spring-boot/) and ORM with [Hibernate](http://hibernate.org/)
-
-#### Client
+### Client
 Single page application with [AngularJS](https://angular.io/).
+</br></br>
 
-#### Analytics
+### Analytics
 Insertions on table Biglietto are sent to [Logstash](https://www.elastic.co/products/logstash), as JSONs, through HTTP requests, which filters and send them to [Elastic Search](https://www.elastic.co/products/elasticsearch). Charts, dashboards and UI are provided by [Kibana](https://www.elastic.co/products/kibana).
